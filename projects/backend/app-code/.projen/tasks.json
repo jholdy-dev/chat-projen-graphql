@@ -4,7 +4,20 @@
       "name": "backend:build",
       "steps": [
         {
-          "exec": "tsc src/server.ts --experimentalDecorators \"true\" --emitDecoratorMetadata \"true\" --outDir ./dist"
+          "name": "remove dist",
+          "exec": "rm -rf dist"
+        },
+        {
+          "name": "create dist",
+          "exec": "mkdir dist"
+        },
+        {
+          "name": "copy package.json",
+          "exec": "node ./generate-package.js"
+        },
+        {
+          "name": "build",
+          "exec": "webpack --config webpack.config.js"
         }
       ]
     },
@@ -142,13 +155,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@types/ws,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,projen,ts-jest,ts-node-dev,typescript,class-validator,graphql-scalars,graphql-tag,graphql-ws,graphql-yoga,graphql,reflect-metadata,ws"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@types/ws,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,projen,ts-jest,ts-loader,ts-node-dev,typescript,webpack,webpack-cli,class-validator,graphql-scalars,graphql-tag,graphql-ws,graphql-yoga,graphql,reflect-metadata,ws"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @types/ws @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node-dev typescript class-validator graphql-scalars graphql-tag graphql-ws graphql-yoga graphql reflect-metadata ws"
+          "exec": "yarn upgrade @types/jest @types/node @types/ws @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-loader ts-node-dev typescript webpack webpack-cli class-validator graphql-scalars graphql-tag graphql-ws graphql-yoga graphql reflect-metadata ws"
         },
         {
           "exec": "npx projen"

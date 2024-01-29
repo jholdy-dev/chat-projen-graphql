@@ -1,4 +1,5 @@
 import { JsonFile } from 'projen';
+import { TypeScriptModuleResolution } from 'projen/lib/javascript';
 import {
   TypeScriptAppProject,
   TypeScriptProjectOptions,
@@ -20,7 +21,14 @@ export class Backend extends TypeScriptAppProject {
         'reflect-metadata',
         'graphql-yoga',
       ],
-      devDeps: ['ts-node-dev', '@types/node', '@types/ws'],
+      devDeps: [
+        'ts-node-dev',
+        '@types/node',
+        '@types/ws',
+        'ts-loader',
+        'webpack',
+        'webpack-cli',
+      ],
       tsconfigDev: {
         compilerOptions: {
           target: 'es2021',
@@ -29,6 +37,7 @@ export class Backend extends TypeScriptAppProject {
           strictPropertyInitialization: false,
           experimentalDecorators: true,
           emitDecoratorMetadata: true,
+          resolveJsonModule: true,
         },
       },
       tsconfig: {
@@ -39,6 +48,9 @@ export class Backend extends TypeScriptAppProject {
           strictPropertyInitialization: false,
           experimentalDecorators: true,
           emitDecoratorMetadata: true,
+          resolveJsonModule: true,
+          moduleResolution: TypeScriptModuleResolution.NODE,
+          declaration: false,
         },
       },
     });
@@ -54,7 +66,24 @@ export class Backend extends TypeScriptAppProject {
     });
 
     this.addTask('backend:build', {
-      exec: 'tsc src/server.ts --experimentalDecorators "true" --emitDecoratorMetadata "true" --outDir ./dist',
+      steps: [
+        {
+          name: 'remove dist',
+          exec: 'rm -rf dist',
+        },
+        {
+          name: 'create dist',
+          exec: 'mkdir dist',
+        },
+        {
+          name: 'copy package.json',
+          exec: 'node ./generate-package.js',
+        },
+        {
+          name: 'build',
+          exec: 'webpack --config webpack.config.js',
+        },
+      ],
     });
 
     this.addTask('backend:start', {

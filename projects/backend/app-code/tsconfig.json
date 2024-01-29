@@ -4,7 +4,7 @@
     "rootDir": "src",
     "outDir": "lib",
     "alwaysStrict": true,
-    "declaration": true,
+    "declaration": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
@@ -26,7 +26,8 @@
     "strictPropertyInitialization": false,
     "stripInternal": true,
     "target": "es2021",
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"

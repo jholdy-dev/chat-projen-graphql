@@ -59,11 +59,23 @@
       "type": "build"
     },
     {
+      "name": "ts-loader",
+      "type": "build"
+    },
+    {
       "name": "ts-node-dev",
       "type": "build"
     },
     {
       "name": "typescript",
+      "type": "build"
+    },
+    {
+      "name": "webpack",
+      "type": "build"
+    },
+    {
+      "name": "webpack-cli",
       "type": "build"
     },
     {

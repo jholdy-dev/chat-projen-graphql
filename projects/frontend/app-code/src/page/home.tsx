@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import {
   getConversationMessagesAsync,
   getConversationsList,
@@ -8,7 +9,6 @@ import {
   sendNewMessageAsync,
   subscribeToConversation,
 } from '../helpers/gql.request';
-import { v4 as uuid } from 'uuid';
 
 const myId = `JPD-${uuid()}`;
 const queryString = window.location.search;

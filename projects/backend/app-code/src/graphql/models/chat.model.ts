@@ -30,6 +30,9 @@ export class Conversation {
   public id!: string;
 
   @Field(() => String)
+  public avatar!: string;
+
+  @Field(() => String)
   public name!: string;
 
   @Field(() => GraphQLISODateTime)

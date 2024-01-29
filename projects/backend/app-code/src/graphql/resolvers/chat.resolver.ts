@@ -11,12 +11,13 @@ export class ChatResolver {
   constructor() {
     const userNames = ['Emily', 'Jacob', 'Sophia', 'Liam', 'Olivia', 'David', 'Zhang'];
 
-    userNames.forEach((item) => {
+    userNames.forEach((item, index) => {
       const id = getNewConversationId();
 
       inMemoryConversations[id] = {
         id,
         name: item,
+        avatar: `https://source.unsplash.com/random/200x200?sig=${index}`,
         createdAt: new Date(),
       };
 
@@ -51,6 +52,7 @@ export class ChatResolver {
     const newConversation = new Conversation({
       name,
       id: conversationId,
+      avatar: `https://source.unsplash.com/random/200x200?sig=${conversationId}`,
     });
 
     inMemoryMessages[newConversation.id] = [

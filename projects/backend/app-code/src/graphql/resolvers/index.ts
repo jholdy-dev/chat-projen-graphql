@@ -1,1 +1,1 @@
-export * from './messaga.resolver';
+export * from './chat.resolver';
