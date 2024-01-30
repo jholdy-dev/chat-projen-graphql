@@ -30,7 +30,7 @@ export class ServiceStack extends Stack {
             streamPrefix: 'Service01',
           }),
         },
-        desiredCount: 2,
+        desiredCount: 1,
         memoryLimitMiB: 1024,
         cpu: 256,
         listenerPort: 80,
@@ -46,8 +46,8 @@ export class ServiceStack extends Stack {
     });
 
     const scalabletaskCount = this.applicationLoadBalancedFargateService.service.autoScaleTaskCount({
-      minCapacity: 2,
-      maxCapacity: 4,
+      minCapacity: 1,
+      maxCapacity: 1,
     });
 
     scalabletaskCount.scaleOnCpuUtilization('CpuScaling', {
