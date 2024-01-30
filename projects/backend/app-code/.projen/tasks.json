@@ -12,12 +12,20 @@
           "exec": "mkdir dist"
         },
         {
+          "name": "copy Dockerfile",
+          "exec": "cp Dockerfile dist/Dockerfile"
+        },
+        {
           "name": "copy package.json",
           "exec": "node ./generate-package.js"
         },
         {
           "name": "build",
-          "exec": "webpack --config webpack.config.js"
+          "exec": "tsc -p tsconfig.json --outDir dist/src"
+        },
+        {
+          "cwd": "./dist",
+          "exec": "npm install"
         }
       ]
     },
@@ -155,13 +163,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@types/ws,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,projen,ts-jest,ts-loader,ts-node-dev,typescript,webpack,webpack-cli,class-validator,graphql-scalars,graphql-tag,graphql-ws,graphql-yoga,graphql,reflect-metadata,ws"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/aws-lambda,@types/jest,@types/node,@types/ws,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,constructs,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,projen,ts-jest,ts-loader,ts-node-dev,typescript,webpack,webpack-cli,@graphql-yoga/plugin-graphql-sse,aws-lambda,class-validator,graphql-scalars,graphql-tag,graphql-ws,graphql-yoga,graphql,reflect-metadata,ws"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @types/ws @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-loader ts-node-dev typescript webpack webpack-cli class-validator graphql-scalars graphql-tag graphql-ws graphql-yoga graphql reflect-metadata ws"
+          "exec": "yarn upgrade @types/aws-lambda @types/jest @types/node @types/ws @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-loader ts-node-dev typescript webpack webpack-cli @graphql-yoga/plugin-graphql-sse aws-lambda class-validator graphql-scalars graphql-tag graphql-ws graphql-yoga graphql reflect-metadata ws"
         },
         {
           "exec": "npx projen"

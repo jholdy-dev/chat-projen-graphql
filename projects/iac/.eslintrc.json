@@ -16,7 +16,11 @@
     "project": "./tsconfig.dev.json"
   },
   "extends": [
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended",
+    "prettier"
   ],
   "settings": {
     "import/parsers": {
@@ -183,7 +187,7 @@
       "error"
     ],
     "@typescript-eslint/no-floating-promises": [
-      "error"
+      "off"
     ],
     "no-return-await": [
       "off"
@@ -215,6 +219,20 @@
           "method"
         ]
       }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_"
+      }
+    ],
+    "no-unreachable": [
+      "error"
+    ],
+    "no-debugger": [
+      "error"
     ]
   },
   "overrides": []

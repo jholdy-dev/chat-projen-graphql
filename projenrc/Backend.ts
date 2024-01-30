@@ -20,8 +20,11 @@ export class Backend extends TypeScriptAppProject {
         'type-graphql@2.0.0-beta.6',
         'reflect-metadata',
         'graphql-yoga',
+        'aws-lambda',
+        '@graphql-yoga/plugin-graphql-sse',
       ],
       devDeps: [
+        '@types/aws-lambda',
         'ts-node-dev',
         '@types/node',
         '@types/ws',
@@ -76,12 +79,20 @@ export class Backend extends TypeScriptAppProject {
           exec: 'mkdir dist',
         },
         {
+          name: 'copy Dockerfile',
+          exec: 'cp Dockerfile dist/Dockerfile',
+        },
+        {
           name: 'copy package.json',
           exec: 'node ./generate-package.js',
         },
         {
           name: 'build',
-          exec: 'webpack --config webpack.config.js',
+          exec: 'tsc -p tsconfig.json --outDir dist/src',
+        },
+        {
+          cwd: './dist',
+          exec: 'npm install',
         },
       ],
     });

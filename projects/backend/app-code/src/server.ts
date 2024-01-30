@@ -13,6 +13,7 @@ async function main() {
     graphiql: {
       subscriptionsProtocol: 'WS',
     },
+    healthCheckEndpoint: '/health',
   });
 
   const httpServer = createServer(yogaApp);
@@ -53,8 +54,10 @@ async function main() {
     wsServer,
   );
 
-  httpServer.listen(4000, () => {
-    console.log('Server is running on port 4000');
+  const port = 80;
+
+  httpServer.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
   });
 }
 

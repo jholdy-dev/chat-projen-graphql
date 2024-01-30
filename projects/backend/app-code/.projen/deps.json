@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -77,6 +81,14 @@
     {
       "name": "webpack-cli",
       "type": "build"
+    },
+    {
+      "name": "@graphql-yoga/plugin-graphql-sse",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-lambda",
+      "type": "runtime"
     },
     {
       "name": "class-validator",

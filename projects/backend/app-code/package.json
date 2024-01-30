@@ -24,6 +24,7 @@
     "organization": false
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.132",
     "@types/jest": "^29.5.11",
     "@types/node": "^18",
     "@types/ws": "^8.5.10",
@@ -44,6 +45,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@graphql-yoga/plugin-graphql-sse": "^3.1.1",
+    "aws-lambda": "^1.0.7",
     "class-validator": "^0.14.1",
     "graphql": "^16.8.1",
     "graphql-scalars": "^1.22.4",

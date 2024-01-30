@@ -11,7 +11,7 @@ desiredProperties.forEach((property) => {
     newPackageJsonObject[property] = originalPackageJsonObject[property];
   }
 });
-newPackageJsonObject.main = 'server.js';
+newPackageJsonObject.main = 'src/server.js';
 const newPackageJsonContent = JSON.stringify(newPackageJsonObject, null, 2);
 fs.writeFileSync(distPackageJsonPath, newPackageJsonContent);
 

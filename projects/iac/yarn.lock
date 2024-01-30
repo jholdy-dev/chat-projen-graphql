@@ -1241,6 +1241,11 @@ aws-cdk@^2.1.0:
   optionalDependencies:
     fsevents "2.3.2"
 
+awscdk-appsync-utils@^0.0.340:
+  version "0.0.340"
+  resolved "https://registry.yarnpkg.com/awscdk-appsync-utils/-/awscdk-appsync-utils-0.0.340.tgz#5b8f857fae1dbb2c21df0c6927de6ade75f7dde2"
+  integrity sha512-dO64vYuZiE7c0ypMTH2kS+aFsh0rWahW5FpIO3u8uajNTIGgkMevfwARQzZI8MeSiuJuA/xV2PpFfe6dq4RnRg==
+
 babel-jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-29.7.0.tgz#f4369919225b684c56085998ac63dbd05be020d5"

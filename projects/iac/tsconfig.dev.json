@@ -2,15 +2,15 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "declaration": true,
+    "declaration": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "es2019"
+      "es2021"
     ],
-    "module": "CommonJS",
+    "module": "commonjs",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -21,9 +21,11 @@
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "stripInternal": true,
-    "target": "ES2019"
+    "target": "es2021",
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts",
